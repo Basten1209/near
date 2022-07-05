@@ -38,8 +38,6 @@ impl State {
 mod tests {
     #[test]
     fn increment() {
-        let context = get_context(vec![], false);
-        testing_env!(context);
         let mut contract = State { val: 0 };
         contract.increment();
         println!("Value after increment: {}", contract.get_num());
@@ -48,8 +46,6 @@ mod tests {
 
     #[test]
     fn decrement() {
-        let context = get_context(vec![], false);
-        testing_env!(context);
         let mut contract = State { val: 1 };
         contract.decrement();
         println!("Value after decrement: {}", contract.get_num());
@@ -58,8 +54,6 @@ mod tests {
 
     #[test]
     fn reset() {
-        let context = get_context(vec![], false);
-        testing_env!(context);
         let mut contract = State { val: 100 };
         contract.reset();
         println!("Value after decrement: {}", contract.get_num());
