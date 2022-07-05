@@ -38,7 +38,7 @@ impl State {
 mod tests {
     #[test]
     fn increment() {
-        let mut contract = State { val: 0 };
+        let mut contract = State { count: 0 };
         contract.increment();
         println!("Value after increment: {}", contract.get_num());
         assert_eq!(1, contract.get_num());
@@ -46,7 +46,7 @@ mod tests {
 
     #[test]
     fn decrement() {
-        let mut contract = State { val: 1 };
+        let mut contract = State { count: 1 };
         contract.decrement();
         println!("Value after decrement: {}", contract.get_num());
         assert_eq!(0, contract.get_num());
@@ -54,7 +54,7 @@ mod tests {
 
     #[test]
     fn reset() {
-        let mut contract = State { val: 100 };
+        let mut contract = State { count: 100 };
         contract.reset();
         println!("Value after decrement: {}", contract.get_num());
         assert_eq!(0, contract.get_num());
@@ -63,14 +63,14 @@ mod tests {
     #[test]
     #[should_panic]
     fn panics_on_overflow() {
-        let mut contract = State {val:u64::MAX};
+        let mut contract = State {count:u64::max_value()};
         contract.increment();
     }
 
     #[test]
     #[should_panic]
     fn panic_on_underflow() {
-        let mut contract = State {val:u64::MIN};
+        let mut contract = State {count:u64::min_value()};
         contract.decrement();
     }
 }
