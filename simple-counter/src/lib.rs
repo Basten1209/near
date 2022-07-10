@@ -28,8 +28,9 @@ impl Default for StatusMessage {
 #[near_bindgen]
 impl State {
     #[init]
-    pub fn new(count: u64) -> Self {}
-
+    pub fn new(count: u64) -> Self {
+        State {count: count}
+    }
     pub fn get_num(&self) -> u64 {
         return self.count;
     }
